@@ -118,4 +118,4 @@ input = {
             'lengthhv':len(amplification),
             }
 
-hvsrcheck.hvsrcheck(input)
+hvsrcheck(input)
