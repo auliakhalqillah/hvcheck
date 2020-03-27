@@ -38,7 +38,8 @@ for line in data:
     if (index == 5):
         hv = line.strip().split("\t")
         hv = float(hv[1])
-
+    
+    # Take the data
     if index >= 7:
         field = line.strip().split("\t")
         freq = float(field[0])
