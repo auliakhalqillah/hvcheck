@@ -63,6 +63,20 @@ CLEAR PEAK SUMMARY	: 4 out of 6 criteria fulfilled
 CLEAR PEAK SUMMARY	: H/V IS NOT CLEAR PEAK [at least 5 out of 6 criteria fulfilled]
 ```
 To run with your Geopsy files, you just need change the file name and log name in `geopsy_hvsrcheck.py` file.
+# NOTE
+The file of `geopsy_hvsrcheck.py` will read if the line of header of Geopsy file (.hv) has 6 lines header, for an example:
+```
+0 # GEOPSY output version 1.1
+1 # Number of windows = 58
+2 # f0 from average	7.59876
+3 # Number of windows for f0 = 58
+4 # f0 from windows	7.25987	6.744	7.77574
+5 # Peak amplitude	1.0481
+6 # Frequency	Average	Min	Max
+7 0.1	0.0222796	0.0109096	0.0454994 <<< start the first data at 7th line
+```
+so, if you want to extract the data based on this example, you have to put the `index` equal to 7 at 43th line of `geopsy_hvsrcheck.py`, because the first data of H/V at 7th line. Remember, in Python the index is started from 0!
+If you have the line of header of Geopsy file (.hv) more than 6 line, you just need readjust the `index` number where the index first data is.
 # CONTACT
 This code has been written by Aulia Khalqillah,S.Si.,M.Si (2020)<br>
 Email: auliakhalqillah.mail@gmail.com 
