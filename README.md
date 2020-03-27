@@ -1,4 +1,4 @@
-# HVSR CHECK: RELIABLE AND CLEAR PEAK OF H/V CURVE
+# HVSR CHECK FOR RELIABLE AND CLEAR PEAK OF H/V CURVE
 This is a program to check reliable and clear peak of H/V curve from Geopsy file (.hv) called `hvsrcheck`.<br>
 The program has been written based on information from [**GUIDELINES FOR THE IMPLEMENTATION OF THE H/V SPECTRAL RATIO TECHNIQUE ON AMBIENT VIBRATIONS MEASUREMENTS,SESAME 2004**](http://sesame.geopsy.org/SES_Reports.htm)
 # REQUIRED
