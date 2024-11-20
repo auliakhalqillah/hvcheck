@@ -33,9 +33,9 @@ def hvsrcheck(indict):
         r31 = all(indict['stdhv'][idfr1] < 3)
         r32 = all(indict['stdhv'][idfr2] < 3)
         if (r31 == True) and (r32 == True):
-            print("RELIABLE 3 - OK\t:Std H/V(f) < 3\t= %f > 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - OK\t:Std H/V(f) < 3\t= %f < 0.5Hz" % indict['F0'])
         else:
-            print("RELIABLE 3 - NO\t:Std H/V(f) > 3\t= %f > 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - NO\t:Std H/V(f) > 3\t= %f < 0.5Hz" % indict['F0'])
 
     print("-----------------------------------------------------------------------")
     print("CLEAR PEAK FOR H/V CURVE")
