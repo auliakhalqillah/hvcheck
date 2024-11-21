@@ -24,18 +24,22 @@ def hvsrcheck(indict):
         r31 = all(indict['stdhv'][idfr1] < 2)
         r32 = all(indict['stdhv'][idfr2] < 2)
         if (r31 == True) and (r32 == True):
-            print("RELIABLE 3 - OK\t\t:Std H/V(f) < 2\t= %f > 0.5Hz" % indict['F0'])
+            # print("RELIABLE 3 - OK\t\t:Std H/V(f) < 2\t= %f > 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - OK\t\t:Std H/V(f) < 2\t= %f < 2" % indict['stdA'])
         else:
-            print("RELIABLE 3 - NO\t\t:Std H/V(f) > 2\t= %f > 0.5Hz" % indict['F0'])
+            # print("RELIABLE 3 - NO\t\t:Std H/V(f) > 2\t= %f > 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - NO\t\t:Std H/V(f) > 2\t= %f > 2" % indict['stdA'])
     elif (indict['F0'] < 0.5):
         idfr1 = where(indict['frhv'] > 0.5*indict['F0'])[0]
         idfr2 = where(indict['frhv'] < 2*indict['F0'])[0]
         r31 = all(indict['stdhv'][idfr1] < 3)
         r32 = all(indict['stdhv'][idfr2] < 3)
         if (r31 == True) and (r32 == True):
-            print("RELIABLE 3 - OK\t:Std H/V(f) < 3\t= %f < 0.5Hz" % indict['F0'])
+            # print("RELIABLE 3 - OK\t:Std H/V(f) < 3\t= %f < 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - OK\t:Std H/V(f) < 3\t= %f < 3" % indict['stdA'])
         else:
-            print("RELIABLE 3 - NO\t:Std H/V(f) > 3\t= %f < 0.5Hz" % indict['F0'])
+            # print("RELIABLE 3 - NO\t:Std H/V(f) > 3\t= %f < 0.5Hz" % indict['F0'])
+            print("RELIABLE 3 - NO\t:Std H/V(f) > 3\t= %f > 3" % indict['stdA'])
 
     print("-----------------------------------------------------------------------")
     print("CLEAR PEAK FOR H/V CURVE")
@@ -43,33 +47,27 @@ def hvsrcheck(indict):
     # Check for Clear Peak of H/V
     # (1) H/V(f-) < A0/2 for f0/4 to f0
     clear_count = []
-    idfr1 = where(indict['frhv']>indict['F0']/4)[0]
-    idfr2 = where(indict['frhv']<indict['F0'])[0]
+    idfr1 = where((indict['frhv']>=indict['F0']/4) & (indict['frhv']<=indict['F0']))[0]
     c1 = (indict['hvsr'][idfr1] < indict['A0']/2)
-    c2 = (indict['hvsr'][idfr2] < indict['A0']/2)
     c1 = True in c1
-    c2 = True in c2
-    if ((c1 == True) and (c2 == True)):
+    if (c1 == True):
         cc = 1
-        print("CLEAR PEAK 1 - OK\t:\u2203 f- \u2208 [f0/4,f0] \u2223 A(f-) < A0/2")
+        print("CLEAR PEAK 1 - OK\t:\u2203 f- \u2208 [f0/4,f0] \u2223 A(f-) < A0/2 = %.4f" % (indict['A0']/2))
     else:
         cc = 0
-        print("CLEAR PEAK 1 - OK\t:\u2203 f- \u2208 [f0/4,f0] \u2223 A(f-) > A0/2")
+        print("CLEAR PEAK 1 - NO\t:\u2203 f- \u2208 [f0/4,f0] \u2223 A(f-) > A0/2 = %.4f" % (indict['A0']/2))
     clear_count.append(cc)
 
     # (2) H/V(f+) < A0/2 for f0 to 4f0
-    idfr3 = where(indict['frhv']>indict['F0'])[0]
-    idfr4 = where(indict['frhv']<4*indict['F0'])[0]
-    c3 = (indict['hvsr'][idfr3] < indict['A0']/2)
-    c4 = (indict['hvsr'][idfr4] < indict['A0']/2)
-    c3 = True in c3
-    c4 = True in c4
-    if ((c3 == True) and (c4 == True)):
+    idfr2 = where((indict['frhv']>=indict['F0']) & (indict['frhv']<=4*indict['F0']))[0]
+    c2 = (indict['hvsr'][idfr2] < indict['A0']/2)
+    c2 = True in c2
+    if (c2 == True):
         cc = 1
-        print("CLEAR PEAK 2 - OK\t:\u2203 f+ \u2208 [f0,4f0] \u2223 A(f+) < A0/2")
+        print("CLEAR PEAK 2 - OK\t:\u2203 f+ \u2208 [f0,4f0] \u2223 A(f+) < A0/2 = %.4f" % (indict['A0']/2))
     else:
         cc = 0
-        print("CLEAR PEAK 2 - OK\t:\u2203 f+ \u2208 [f0,4f0] \u2223 A(f+) > A0/2")
+        print("CLEAR PEAK 2 - OK\t:\u2203 f+ \u2208 [f0,4f0] \u2223 A(f+) > A0/2 = %.4f" % (indict['A0']/2))
     clear_count.append(cc)
 
     # (3) A0 > 2
@@ -81,7 +79,7 @@ def hvsrcheck(indict):
         print("CLEAR PEAK 3 - NO\t:A0 < 2 |",indict['A0'], "< 2")
     clear_count.append(cc)
 
-    # (4) fpeak[A(f) +/- stdA(f) = f0 +/- 5%]
+    # (4) fpeak[A(f) +/- stdA(f)] = f0 +/- 5%
     F0min = indict['F0']-(indict['F0']*(5/100))
     F0max = indict['F0']+(indict['F0']*(5/100))
     idminstdhv = argmax(indict['minstdhv'])
@@ -89,10 +87,12 @@ def hvsrcheck(indict):
     if (indict['frhv'][idminstdhv] > F0min) and (indict['frhv'][idminstdhv] < F0max ):
         if (indict['frhv'][idmaxstdhv] > F0min) and (indict['frhv'][idmaxstdhv] < F0max):
             cc = 1
-            print("CLEAR PEAK 4 - OK\t:Fpeak [A(f) \u00B1 stdA(f) = f0 \u00B1 5%]")
+            print("CLEAR PEAK 4 - OK\t:Fpeak [A(f) \u00B1 stdA(f)] = f0 \u00B1 5%s %s [%.4f,%.4f] = [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
         else:
             cc = 0
-            print("CLEAR PEAK 4 - NO\t:Fpeak [A(f) \u00B1 stdA(f)\u2260f0 \u00B1 5%]")
+            print("CLEAR PEAK 4 - NO\t:Fpeak [A(f) \u00B1 stdA(f)] = f0 \u00B1 5%s %s [%.4f,%.4f] = [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
+    else:
+        cc = 0
     clear_count.append(cc)
 
     # (5) stdF < epsilon(f0)
@@ -129,10 +129,10 @@ def hvsrcheck(indict):
 
     if (indict['stdA'] < thetaf0):
         cc = 1
-        print("CLEAR PEAK 6 - OK\t:\u03C3A(F0) < \u03B8 (F0)")
+        print("CLEAR PEAK 6 - OK\t:\u03C3A(F0) < \u03B8 (F0) = %.4f < %.4f" % (indict['stdA'], thetaf0))
     else:
         cc = 0
-        print("CLEAR PEAK 6 - OK\t:\u03C3A(F0) > \u03B8 (F0)")
+        print("CLEAR PEAK 6 - OK\t:\u03C3A(F0) > \u03B8 (F0) = %.4f > %.4f" % (indict['stdA'], thetaf0))
     clear_count.append(cc)
 
     print("\nCLEAR PEAK SUMMARY\t: %d out of 6 criteria fulfilled" % int(sum(clear_count)))
