@@ -90,9 +90,10 @@ def hvsrcheck(indict):
             print("CLEAR PEAK 4 - OK\t:Fpeak [A(f) \u00B1 stdA(f)] = f0 \u00B1 5%s %s [%.4f,%.4f] = [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
         else:
             cc = 0
-            print("CLEAR PEAK 4 - NO\t:Fpeak [A(f) \u00B1 stdA(f)] = f0 \u00B1 5%s %s [%.4f,%.4f] = [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
+            print("CLEAR PEAK 4 - NO\t:Fpeak [A(f) \u00B1 stdA(f)] \u2209 f0 \u00B1 5%s %s [%.4f,%.4f] \u2209 [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
     else:
         cc = 0
+        print("CLEAR PEAK 4 - NO\t:Fpeak [A(f) \u00B1 stdA(f)] \u2209 f0 \u00B1 5%s %s [%.4f,%.4f] \u2209 [%.4f,%.4f]" % ("%", "<=>", indict['frhv'][idminstdhv], indict['frhv'][idmaxstdhv], F0min, F0max))
     clear_count.append(cc)
 
     # (5) stdF < epsilon(f0)
