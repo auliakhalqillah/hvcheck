@@ -5,7 +5,7 @@ with open("README.md","r") as fh:
 
 setuptools.setup(
     name="hvcheck",
-    version="0.0.1",
+    version="0.2",
     author="Aulia Khalqillah",
     author_email="auliakhalqillah.mail@gmail.com",
     description="Program to check reliable and clear peak of H/V curve",
