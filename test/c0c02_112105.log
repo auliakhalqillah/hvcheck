@@ -1,0 +1,104 @@
+### Parameters ###
+SIGNAL FILE NAME = ### temporary signal ###
+FROM TIME TYPE = 1
+FROM TIME TEXT = 5h33m42.9500s
+TO TIME TYPE = 1
+TO TIME TEXT = 5h47m44.4500s
+USE FIRST PICK ONLY = n
+WINDOW MIN LENGTH (s) = 25
+WINDOW MAX LENGTH (s) = 50
+WINDOW LENGTH TYPE (at least/exactly/freq. dep.) = exactly
+DO BAD SAMPLE TOLERANCE (y/n) = n
+BAD SAMPLE TOLERANCE (s) = 0
+DO WINDOW OVERLAP (y/n) = n
+WINDOW OVERLAP (%) = 5
+DO BAD SAMPLE THRESHOLD (y/n) = n
+BAD SAMPLE THRESHOLD (%) = 90
+ANTI-TRIGGERING ON RAW SIGNAL (y/n) = n
+USED RAW COMPONENTS = y, y, y, n, y
+RAW STA (s) = 1
+RAW LTA (s) = 30
+RAW MIN SLTA = 0.2
+RAW MAX SLTA = 2.5
+ANTI-TRIGGERING ON FILTERED SIGNAL (y/n) = y
+FILTER TYPE (low pass/high pass/band pass/band reject) = band pass
+FILTER METHOD (butterworth/taper) = butterworth
+FILTER MIN FREQUENCY (Hz) = 0.3
+FILTER MAX FREQUENCY (Hz) = 10
+FILTER CAUSAL (y/n) = n
+FILTER ORDER = 1
+FILTER WIDTH = 0.5
+USED FILTERED COMPONENTS = y, y, y, n, y
+FILTERED STA (s) = 1
+FILTERED LTA (s) = 30
+FILTERED MIN SLTA = 0.2
+FILTERED MAX SLTA = 2
+SMOOTHING TYPE (konno & ohmachi/constant band/proportional/no smoothing) = konno & ohmachi
+SMOOTHING CONSTANT = 40.00
+DO COSINE TAPER = false
+TAPER WIDTH = 5
+DO HIGH PASS = false
+HIGH PASS FREQUENCY = 0.2
+MINIMUM FREQUENCY = 0.5
+MAXIMUM FREQUENCY = 10
+INVERSED FREQUENCY = n
+SAMPLES NUMBER FREQUENCY = 1024
+SAMPLING TYPE FREQUENCY (0=log, 1=linear)= 0
+HORIZONTAL COMPONENTS = Squared
+HORIZONTAL AZIMUTH = 0
+### End Parameters ###
+### Windowing Log ###
+Automatic windowing
+Adding window from 20023 to 20048 s.
+Adding window from 20074.5 to 20099.5 s.
+Adding window from 20111.2 to 20136.2 s.
+Adding window from 20136.3 to 20161.3 s.
+Adding window from 20161.3 to 20186.3 s.
+Adding window from 20293.4 to 20318.4 s.
+Adding window from 20318.4 to 20343.4 s.
+Adding window from 20343.4 to 20368.4 s.
+Adding window from 20368.5 to 20393.5 s.
+Adding window from 20409.4 to 20434.4 s.
+Adding window from 20440.7 to 20465.7 s.
+Adding window from 20465.8 to 20490.8 s.
+Adding window from 20490.8 to 20515.8 s.
+Adding window from 20515.8 to 20540.8 s.
+Adding window from 20565.4 to 20590.4 s.
+Adding window from 20590.4 to 20615.4 s.
+Adding window from 20615.4 to 20640.4 s.
+Adding window from 20640.4 to 20665.4 s.
+Adding window from 20665.4 to 20690.4 s.
+Adding window from 20702 to 20727 s.
+Adding window from 20739.7 to 20764.7 s.
+Adding window from 20764.8 to 20789.8 s.
+Adding window from 20789.8 to 20814.8 s.
+Adding window from 20814.8 to 20839.8 s.
+### End Windowing Log ###
+### Time Windows ###
+# Number= 24
+# Start time 	 End Time 	 Window length
+20023	20048	25
+20074.5	20099.5	25
+20111.2	20136.2	25
+20136.3	20161.3	25
+20161.3	20186.3	25
+20293.4	20318.4	25
+20318.4	20343.4	25
+20343.4	20368.4	25
+20368.5	20393.5	25
+20409.4	20434.4	25
+20440.7	20465.7	25
+20465.8	20490.8	25
+20490.8	20515.8	25
+20515.8	20540.8	25
+20565.4	20590.4	25
+20590.4	20615.4	25
+20615.4	20640.4	25
+20640.4	20665.4	25
+20665.4	20690.4	25
+20702	20727	25
+20739.7	20764.7	25
+20764.8	20789.8	25
+20789.8	20814.8	25
+20814.8	20839.8	25
+### End Time Windows ###
